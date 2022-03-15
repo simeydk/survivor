@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
+
+
+@font-face {
+    font-family: 'survivor';
+    src: url('/fonts/survivant.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sriracha';
+    src: url('/fonts/sriracha.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.paper {
+    background: url('/paper-texture.svg');
+}
