@@ -1,65 +1,24 @@
 import Head from 'next/head'
-import Image from 'next/image'
-
-import styles from '@/pages/index.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className="bg-slate-900 h-screen p-4 flex flex-col items-center justify-center">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <main className="mx-auto p-8 rounded">
+        <h1 className="text-5xl font-bold text-slate-600 leading-snug">
+          <a href="https://nextjs.org" target="_blank" rel="noreferrer"><span className="text-transparent bg-clip-text bg-gradient-to-br from-sky-500 to-sky-700 hover:to-sky-500 hover:from-lime-200 hover:underline">NextJS</span></a> &&<br/> 
+          <a href="https://jestjs.io" target="_blank" rel="noreferrer"><span className="text-transparent bg-clip-text bg-gradient-to-br from-sky-500 to-sky-700 hover:to-sky-500 hover:from-lime-200 hover:underline">Jest</span></a> && <br/>
+          <a href="https://tailwindcss.io" target="_blank" rel="noreferrer"><span className="text-transparent bg-clip-text bg-gradient-to-br from-sky-500 to-sky-700 hover:to-sky-500 hover:from-lime-200 hover:underline">TailwindCSS</span></a>
         </h1>
+        
 
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a href="https://vercel.com/new" className={styles.card}>
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+  
     </div>
   )
 }
