@@ -6,11 +6,11 @@ const API_URL = "/api/survivor";
 
 export const fetchJSON = async (url: string) => fetch(url).then((res) => res.json());
 
-export function useSurvivors(): [Survivor[], (survivor: Survivor) => any] {
+export function useSurvivors(initialData: Survivor[] = []): [Survivor[], (survivor: Survivor) => any] {
     const { data, error } = useSWR<Survivor[]>(API_URL, fetchJSON);
     const { mutate } = useSWRConfig();
 
-    const survivors = data || [];
+    const survivors = data || initialData;
 
     const refresh = () => {
         mutate(API_URL);

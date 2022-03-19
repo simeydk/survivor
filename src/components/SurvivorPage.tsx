@@ -1,11 +1,12 @@
 import { useLocalStorage } from "@/lib/LocalStorage";
+import { getAll, Survivor } from "@/lib/survivor";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useSurvivors } from "../lib/useSurvivor";
 import { Owner } from "./Owner";
 
-export default function Survivors() {
+export default function Survivors({initialData = []}: {initialData: Survivor[]}) {
     const [survivors, update] = useSurvivors();
 
     const spoilRef = useRef<HTMLSelectElement>(null);
@@ -66,4 +67,12 @@ export default function Survivors() {
 }
 
 
-
+export async function getStaticProps() {
+    return []
+    const initialData = await getAll()
+    return {
+        props: {
+            initialData
+        }
+    }
+}
