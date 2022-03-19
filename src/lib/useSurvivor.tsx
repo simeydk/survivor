@@ -31,7 +31,7 @@ export function useSurvivors(): [Survivor[], (survivor: Survivor) => any] {
     };
 
     useEffect(() => {
-        refresh();
-    }, [refresh]);
+        mutate(API_URL);
+    }, []);
     return [survivors, update];
 }
