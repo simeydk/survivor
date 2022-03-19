@@ -2,7 +2,7 @@ import { Survivor } from "../lib/survivor";
 import { useState } from "react";
 import { Contestant } from "./Contestant";
 
-export function Owner({ owner, leanRight, update, spoilometer=0 }: { owner: { name: string; survivors: Survivor[]; }; leanRight: boolean; update: (survivor: Survivor) => any; spoilometer: number}) {
+export function Owner({ owner, leanRight, update, spoilometer=0, showComments=false }: { owner: { name: string; survivors: Survivor[]; }; leanRight: boolean; update: (survivor: Survivor) => any; spoilometer: number, showComments: boolean; }) {
     const { name, survivors } = owner;
 
     return (
@@ -13,7 +13,7 @@ export function Owner({ owner, leanRight, update, spoilometer=0 }: { owner: { na
                     {name.toUpperCase()}
                 </h2>
                 <ul className="flex flex-col gap-2">
-                    {survivors.map((survivor) => <Contestant key={survivor.Name} survivor={survivor} spoilometer={spoilometer} update={update} />)}
+                    {survivors.map((survivor) => <Contestant key={survivor.Name} survivor={survivor} spoilometer={spoilometer} update={update} showComments={showComments}/>)}
                 </ul>
             </div>
         </div>

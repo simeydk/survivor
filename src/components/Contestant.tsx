@@ -6,10 +6,12 @@ export function Contestant({
     survivor,
     spoilometer = 0,
     update,
+    showComments = false,
 }: {
     survivor: Survivor;
     spoilometer: number;
     update: (survivor: Survivor) => any;
+    showComments: boolean;
 }) {
     const { Name, Comments, EliminatedEpisode, OriginalTribe } = survivor;
     const isEliminated = (EliminatedEpisode || 99) <= spoilometer;
@@ -59,12 +61,20 @@ export function Contestant({
                     {Name}
                 </h3>
                 <form action="" className="w-full">
-                    <textarea
+                    {showComments ? <textarea
+                        key="comments"
                         rows={2}
                         className="p-1 rounded bg-white/50 w-full text-sm leading-tight"
                         value={Comments}
                         onChange={(e) => update({ ...survivor, Comments: e.target.value })}
-                    />
+                    /> :
+                    <textarea
+                        key="disabled"
+                        rows={2}
+                        className="p-1 rounded bg-stone-300/75 w-full text-sm leading-tight"
+                        disabled
+                        value=""
+                    />}
                 </form>
             </div>
         </li>

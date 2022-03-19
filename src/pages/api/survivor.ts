@@ -3,7 +3,7 @@ import { getAll, update } from '../../lib/survivor';
 
 export default async function transactions(req: NextApiRequest, res: NextApiResponse) {
     
-    console.log(req.method, req.body && JSON.parse(req.body))
+    console.log(req.method, '/api/survivor', req.body && JSON.parse(req.body))
 
     let data
     let response

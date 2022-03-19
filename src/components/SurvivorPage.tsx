@@ -14,6 +14,7 @@ export default function Survivors({initialData = []}: {initialData: Survivor[]})
     const maxSpoiloMeter = Math.max(
         ...survivors.map((s) => s.EliminatedEpisode || 0)
     );
+    const showComments = spoiloMeter === maxSpoiloMeter;
     useEffect(() => {spoilRef.current && (spoilRef.current.value = String(spoiloMeter))}, [])
 
     // const [spoilometer, setSpoilometer] = useLocalStorage<number>("spoilometer", 0);
@@ -59,7 +60,7 @@ export default function Survivors({initialData = []}: {initialData: Survivor[]})
             </div>
             <main className="w-full p-2 gap-4 md:p-8 flex md:gap-8 flex-wrap">
                 {owners.map((owner, i) => (
-                    <Owner owner={owner} key={owner.name} leanRight={Boolean(i % 2)} update={update} spoilometer={spoiloMeter} />
+                    <Owner owner={owner} key={owner.name} leanRight={Boolean(i % 2)} update={update} spoilometer={spoiloMeter} showComments={showComments} />
                 ))}
             </main>
         </div>
