@@ -15,8 +15,8 @@ const HEADERS = [
     'Name',
     'OriginalTribe',
     'EliminatedEpisode',
-    'VotedOutNumber',
     'Comments',
+    'VotedOutNumber',
 ]
 
 

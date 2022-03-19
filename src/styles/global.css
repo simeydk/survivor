@@ -19,4 +19,5 @@
 
 .paper {
     background: url('/paper-texture.svg');
+    background-repeat: repeat;
 }
