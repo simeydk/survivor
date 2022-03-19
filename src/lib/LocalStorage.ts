@@ -4,6 +4,7 @@ export class LSMap<K, V> extends Map {
     prefix: string
     ttlSecs: number
     separator: string = '--'
+    // @ts-ignore
     constructor(prefix = 'cache', ttlSecs: number = 3600, ...rest) {
         // @ts-ignore
         super(...rest)
@@ -20,7 +21,7 @@ export class LSMap<K, V> extends Map {
         const now = Date.now()
         for (const key of Object.keys(window.localStorage)) {
             if (key.startsWith(this.prefix + this.separator)) {
-                const {expiry} = JSON.parse(window.localStorage.getItem(key))
+                const {expiry} = JSON.parse(window.localStorage.getItem(key) || '{}')
                 if (now > expiry) {
                     window.localStorage.removeItem(key)
                 }

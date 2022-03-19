@@ -32,6 +32,6 @@ export function useSurvivors(): [Survivor[], (survivor: Survivor) => any] {
 
     useEffect(() => {
         refresh();
-    }, []);
+    }, [refresh]);
     return [survivors, update];
 }

@@ -41,6 +41,7 @@ export async function getAll(): Promise<Survivor[]> {
     });
 
     const values = response.data.values;
+    if (!values) return []
     return sheetsArrayToObjectArray(values).map((x, i) => ({...x, row: i + 2})) as Survivor[];
 }
 
@@ -49,6 +50,7 @@ export async function update(survivor: Survivor ) {
     const sheets = await getSheetsService();
 
     console.log({update: survivor})
+    // @ts-ignore
     const values = [HEADERS.map((key) => survivor[key] || '')];
     
 
@@ -72,7 +74,7 @@ async function getSheetsService() {
     const auth = await google.auth.getClient({
         credentials: {
             client_email: process.env.GOOGLE_CLIENT_EMAIL,
-            private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+            private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
         },
         scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
@@ -85,6 +87,7 @@ function sheetsArrayToObjectArray([headers, ...rows]: any[][]) {
     return rows.map((row) => {
         const result = {};
         headers.forEach((key, i) => {
+            // @ts-ignore
             result[key] = row[i];
         });
         return result;
