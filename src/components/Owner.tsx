@@ -2,9 +2,8 @@ import { Survivor } from "../lib/survivor";
 import { useState } from "react";
 import { Contestant } from "./Contestant";
 
-export function Owner({ owner, leanRight, update }: { owner: { name: string; survivors: Survivor[]; }; leanRight: boolean; update: (survivor: Survivor) => any; }) {
+export function Owner({ owner, leanRight, update, spoilometer=0 }: { owner: { name: string; survivors: Survivor[]; }; leanRight: boolean; update: (survivor: Survivor) => any; spoilometer: number}) {
     const { name, survivors } = owner;
-    const [spoilometer, setSpoilometer] = useState(2);
 
     return (
         <div className={"w-full max-w-sm p-4 md:p-8 relative paper shadow " + (leanRight ? "rotate-1" : "-rotate-1")}>
