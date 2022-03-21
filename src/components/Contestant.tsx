@@ -71,6 +71,7 @@ export function Contestant({
                         className="p-1 rounded bg-white/25 w-full text-sm leading-tight placeholder:text-stone-600 placeholder:italic"
                         // @ts-ignore
                         value={comment} onChange={(e) => setComment(e.target.value )}
+                        onFocusOut
                     /> :
                     <textarea
                         key="disabled"
