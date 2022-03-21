@@ -1,6 +1,7 @@
 import { Survivor } from "../lib/survivor";
 import { IMG_SRC } from "../lib/IMG_SRC";
 import { TRIBE_COLORS } from "../lib/TRIBE_COLORS";
+import { useDebouncedState } from './../lib/useDebouncedState';
 
 export function Contestant({
     survivor,
@@ -13,16 +14,18 @@ export function Contestant({
     update: (survivor: Survivor) => any;
     showComments: boolean;
 }) {
-    const { Name, Comments, EliminatedEpisode, OriginalTribe } = survivor;
+    const { Name, Comments, EliminatedEpisode, OriginalTribe, VotedOutNumber } = survivor;
     const isEliminated = (EliminatedEpisode || 99) <= spoilometer;
     const imgSrc = IMG_SRC[Name.toLowerCase()];
     const tribeColor = TRIBE_COLORS[OriginalTribe.slice(0, 1)];
+    // @ts-ignore
+    const [comment, setComment] = useDebouncedState(Comments, x => update({...survivor, Comments: x}) , 500);
     return (
         <li className="flex gap-2">
             <div>
                 <div
                     className={
-                        "relative -rotate-1 " +
+                        "relative -rotate-1 p-1 pb-2 bg-white drop-shadow " +
                         (isEliminated ? " grayscale brightness-90 " : "")
                     }
                 >
@@ -30,7 +33,7 @@ export function Contestant({
                         src={imgSrc}
                         alt={Name}
                         className={
-                            "w-16 h-16 border-4 border-b-8  border-white " +
+                            "w-12 h-12 " +
                             (isEliminated ? " grayscale brightness-90 " : "")
                         }
                     />
@@ -44,7 +47,7 @@ export function Contestant({
                     </div>
                     {isEliminated ? (
                         <div className="absolute inset-0 grid place-content-center font-['courier_new'] text-white font-bold text-3xl drop-shadow-md">
-                            {EliminatedEpisode}
+                            {VotedOutNumber}
                         </div>
                     ) : (
                         ""
@@ -64,14 +67,15 @@ export function Contestant({
                     {showComments ? <textarea
                         key="comments"
                         rows={2}
-                        className="p-1 rounded bg-white/50 w-full text-sm leading-tight"
-                        value={Comments}
-                        onChange={(e) => update({ ...survivor, Comments: e.target.value })}
+                        placeholder="notes and quips"
+                        className="p-1 rounded bg-white/25 w-full text-sm leading-tight placeholder:text-stone-600 placeholder:italic"
+                        // @ts-ignore
+                        value={comment} onChange={(e) => setComment(e.target.value )}
                     /> :
                     <textarea
                         key="disabled"
                         rows={2}
-                        className="p-1 rounded bg-stone-300/75 w-full text-sm leading-tight"
+                        className="p-1 rounded bg-stone-300/50 w-full text-sm leading-tight"
                         disabled
                         value=""
                     />}

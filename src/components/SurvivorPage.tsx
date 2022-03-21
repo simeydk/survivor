@@ -58,11 +58,14 @@ export default function Survivors({initialData = []}: {initialData: Survivor[]})
                     </select>
                 </form>
             </div>
-            <main className="w-full p-2 gap-4 md:p-8 flex md:gap-8 flex-wrap">
+            <main className="w-full p-2 gap-4 md:p-8 flex md:gap-8 flex-wrap justify-center items-center">
                 {owners.map((owner, i) => (
                     <Owner owner={owner} key={owner.name} leanRight={Boolean(i % 2)} update={update} spoilometer={spoiloMeter} showComments={showComments} />
                 ))}
             </main>
+            <footer className="py-8 font-['courier_new'] text-sm font-bold text-stone-500 text-center">
+                    Edit on <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1mL3Gx1u-9pBJaj75a0HhsHPkgkQJZKMOtcoIHUAjCKM/edit#gid=0" className="underline">Google Sheets</a>
+            </footer>
         </div>
     );
 }
