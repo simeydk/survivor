@@ -7,7 +7,7 @@ import { useSurvivors } from "../lib/useSurvivor";
 import { Owner } from "./Owner";
 
 export default function Survivors({initialData = []}: {initialData: Survivor[]}) {
-    const [survivors, update] = useSurvivors();
+    const [survivors, update] = useSurvivors(initialData);
 
     const spoilRef = useRef<HTMLSelectElement>(null);
     const [spoiloMeter, setSpoilometer] = useLocalStorage<number>('spoilometer', 0);
@@ -23,6 +23,7 @@ export default function Survivors({initialData = []}: {initialData: Survivor[]})
         (name) => ({
             name,
             survivors: survivors.filter((s) => s.Owner === name),
+            owner: survivors.filter(s => s.Name === name)[0]
         })
     );
 
@@ -58,7 +59,7 @@ export default function Survivors({initialData = []}: {initialData: Survivor[]})
                     </select>
                 </form>
             </div>
-            <main className="w-full p-2 gap-4 md:p-8 flex md:gap-8 flex-wrap justify-center items-center">
+            <main className="w-full py-8 p-1 gap-6 md:p-8 flex md:gap-8 flex-wrap justify-center items-center">
                 {owners.map((owner, i) => (
                     <Owner owner={owner} key={owner.name} leanRight={Boolean(i % 2)} update={update} spoilometer={spoiloMeter} showComments={showComments} />
                 ))}
