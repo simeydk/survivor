@@ -20,6 +20,8 @@ export function Contestant({
     const tribeColor = TRIBE_COLORS[OriginalTribe.slice(0, 1)];
     // @ts-ignore
     const [comment, setComment] = useDebouncedState(Comments, x => update({...survivor, Comments: x}) , 500);
+    
+    
     return (
         <li className="flex gap-2">
             <div>

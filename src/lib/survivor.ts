@@ -26,7 +26,7 @@ export interface Survivor {
     EliminatedEpisode: number
     VotedOutNumber: number
     Comments: string
-    Owner: 'Cara' | 'Simey' | 'Ryan' | 'Nielen' | 'Unpicked'
+    Owner: 'Cara' | 'Simey' | 'Ryan' | 'Nielen' | 'Unpicked' | 'Free' | 'Episode'
     PickRank: number
     GlobalPickRank: number
     row: number

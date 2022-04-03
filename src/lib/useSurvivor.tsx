@@ -10,7 +10,7 @@ export const fetchJSON = async (url: string) => fetch(url).then((res) => res.jso
 const debouncedFetch = debounce(fetchJSON, 300);
 
 export function useSurvivors(initialData: Survivor[] = []): [Survivor[], (survivor: Survivor) => any, () => void] {
-    const { data, error } = useSWR<Survivor[]>(API_URL, fetchJSON, { refreshInterval: 5000});
+    const { data, error } = useSWR<Survivor[]>(API_URL, fetchJSON, { refreshInterval: 300_000});
     const { mutate } = useSWRConfig();
 
     const survivors = data || initialData;
@@ -36,6 +36,7 @@ export function useSurvivors(initialData: Survivor[] = []): [Survivor[], (surviv
             survivors.map((s) => (s.row === survivor.row ? survivor : s)),
             false
         );
+        return await pushnpull(survivor)
         return await debouncedPushnpull(survivor);
     };
 

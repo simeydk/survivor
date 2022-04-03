@@ -25,6 +25,7 @@ export default async function transactions(req: NextApiRequest, res: NextApiResp
             console.log(req.body)
             data = JSON.parse(req.body)
             response = await update(data)
+            res.unstable_revalidate('/')
             res.status(200).json(response);
             break;
 
