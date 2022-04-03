@@ -7,7 +7,7 @@ export function Note({
     survivor,
     update,
     showComments = false,
-    rows = 4,
+    rows = 5,
     title,
 }: {
     survivor: Survivor;

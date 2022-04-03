@@ -94,7 +94,7 @@ export default function Survivors({
                 <div className="h-8">
             {showComments && <h3 className="font-survivor text-amber-800 text-lg">{numContestantsLeft} are left</h3>}
                 </div>
-                <div className="max-w-xl paper p-4 w-full flex flex-col gap-4 shadow -rotate-1">
+                <div className="max-w-xl paper py-4 w-full flex flex-col gap-4 shadow -rotate-1">
                     
                     <h2 className="font-survivor text-4xl rotate-1 text-amber-900 mb-4 ">
                         Dear Diary
