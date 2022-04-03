@@ -90,7 +90,7 @@ export default function Survivors({
                 </form>
                 
             </div>
-            <div className="flex flex-col gap-2 items-center p-4">
+            {free ? <div className="flex flex-col gap-2 items-center p-4">
                 <div className="h-8">
             {showComments && <h3 className="font-survivor text-amber-800 text-lg">{numContestantsLeft} are left</h3>}
                 </div>
@@ -108,7 +108,7 @@ export default function Survivors({
                     />
                     {episodes.map((episode) => <Note key={episode.Name} survivor={episode} update={update} showComments={episode.PickRank <= spoiloMeter} />)}
                 </div>
-            </div>
+            </div> : ""}
             
             <main className="w-full py-8 p-1 gap-6 md:p-8 flex md:gap-8 flex-wrap justify-center items-start">
                 {owners.map((owner, i) => (
