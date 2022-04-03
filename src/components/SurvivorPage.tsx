@@ -77,7 +77,7 @@ export default function Survivors({
                         ref={spoilRef}
                         className="text-sm px-2 p-1 bg-white/50 rounded border"
                     >
-                        <option value={0}>Start</option>
+                        <option value={0} key={0}>Start</option>
                         {Array.from(
                             { length: maxSpoiloMeter },
                             (_, i) => i
@@ -106,7 +106,7 @@ export default function Survivors({
                         update={update}
                         title=""
                     />
-                    {episodes.map((episode) => <div className="-rotate-1"><Note key={episode.Name} survivor={episode} update={update} showComments={episode.PickRank <= spoiloMeter} /></div>)}
+                    {episodes.map((episode) => <div className="-rotate-1" key={episode.Name}><Note key={episode.Name} survivor={episode} update={update} showComments={episode.PickRank <= spoiloMeter} /></div>)}
                 </div>
             </div> : ""}
             
