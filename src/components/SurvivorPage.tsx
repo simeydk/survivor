@@ -94,7 +94,7 @@ export default function Survivors({
                 <div className="h-8">
             {showComments && <h3 className="font-survivor text-amber-800 text-lg">{numContestantsLeft} are left</h3>}
                 </div>
-                <div className="max-w-xl paper px-2 py-4 w-full flex flex-col gap-4 shadow -rotate-1">
+                <div className="max-w-xl paper px-2 py-4 w-full flex flex-col gap-4 shadow">
                     
                     <h2 className="font-survivor text-4xl rotate-1 text-amber-900 mb-4 ">
                         Dear Diary
@@ -106,7 +106,7 @@ export default function Survivors({
                         update={update}
                         title=""
                     />
-                    {episodes.map((episode) => <Note key={episode.Name} survivor={episode} update={update} showComments={episode.PickRank <= spoiloMeter} />)}
+                    {episodes.map((episode) => <div className="-rotate-1"><Note key={episode.Name} survivor={episode} update={update} showComments={episode.PickRank <= spoiloMeter} /></div>)}
                 </div>
             </div> : ""}
             

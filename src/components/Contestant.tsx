@@ -68,16 +68,16 @@ export function Contestant({
                 <form action="" className="w-full">
                     {showComments ? <textarea
                         key="comments"
-                        rows={2}
+                        rows={3}
                         placeholder="notes and quips"
-                        className="p-1 rounded bg-white/25 w-full text-sm leading-tight placeholder:text-stone-600 placeholder:italic"
+                        className="p-1 rounded bg-white/35 w-full text-sm leading-tight placeholder:text-stone-600 placeholder:italic"
                         // @ts-ignore
                         value={comment} onChange={(e) => setComment(e.target.value )}
                         onFocusOut
                     /> :
                     <textarea
                         key="disabled"
-                        rows={2}
+                        rows={3}
                         className="p-1 rounded bg-stone-300/50 w-full text-sm leading-tight"
                         disabled
                         value=""
